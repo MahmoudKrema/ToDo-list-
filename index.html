@@ -1,0 +1,35 @@
+<head>
+
+</head>
+
+<body>
+    <h2>ToDo List:</h2>
+ 
+    <ul>
+
+    </ul>
+        
+        <script>
+
+    
+
+            const electron = require('electron');
+            const {ipcRenderer} = electron;
+            let theList = document.querySelector("ul");
+
+            ipcRenderer.on('ToDo:Sent', (event, theToDo) => {
+                console.log(theToDo);
+                let li = document.createElement("li");
+                li.appendChild(document.createTextNode(theToDo));
+                theList.appendChild(li);
+            });
+
+            ipcRenderer.on('Clear:Sent', (event) => {
+                theList.innerHTML= "";
+            });
+
+            
+        </script>
+
+  
+</body>

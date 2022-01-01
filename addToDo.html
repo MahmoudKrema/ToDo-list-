@@ -1,0 +1,38 @@
+<head>
+
+</head>
+
+<body>
+    <h2>Add ToDo</h2>
+
+    <form action="">
+        <label>Add: </label>
+        <input type="text" autofocus id= "theInput" />
+        <input type="submit">
+    </form>
+
+
+    <script>
+        
+        const electron = require('electron');
+        const {ipcRenderer} = electron;
+        // const remote = electron.remote;
+        // const path = require('path');
+        
+        
+
+        const myForm = document.querySelector("form");
+        myForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const theToDo = document.querySelector("#theInput").value;
+            console.log(theToDo);
+            ipcRenderer.send('ToDo:Submit', theToDo);
+
+            // let window = remote.getCurrentWindow();
+            // window.close(); 
+        })
+    </script>
+    
+        
+</body>
+ 
